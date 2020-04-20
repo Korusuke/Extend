@@ -13,9 +13,9 @@ class _AlignScreenState extends State<AlignScreen> {
   void initState() {
     super.initState();
     if (globals.amIMaster) {
-      handleMaster();
+      // handleMaster();
     } else {
-      handleNode();
+      // handleNode();
     }
   }
 
