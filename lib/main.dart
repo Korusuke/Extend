@@ -3,9 +3,6 @@ import 'package:mcan/screens/scan.dart';
 import 'package:mcan/screens/align.dart';
 import 'package:mcan/globals.dart' as globals;
 
-
-final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
-
 void main() {
   runApp(MaterialApp(
     title: 'Extended Displays?',
@@ -29,12 +26,12 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    globals.width = MediaQuery.of(context).size.width;
-    globals.height = MediaQuery.of(context).size.width;
   }
 
   @override
   Widget build(BuildContext context) {
+    globals.width = MediaQuery.of(context).size.width;
+    globals.height = MediaQuery.of(context).size.width;
     return Scaffold(
         body: Center(
       child: Column(

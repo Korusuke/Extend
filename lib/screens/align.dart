@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mcan/globals.dart';
+import 'package:mcan/globals.dart' as globals;
 
 class AlignScreen extends StatefulWidget {
   @override
@@ -8,6 +8,16 @@ class AlignScreen extends StatefulWidget {
 
 class _AlignScreenState extends State<AlignScreen> {
   String masterText = "Align Page";
+
+  @override
+  void initState() {
+    super.initState();
+    if (globals.amIMaster) {
+      handleMaster();
+    } else {
+      handleNode();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
