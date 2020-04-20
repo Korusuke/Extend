@@ -28,6 +28,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   String masterText = "Connect";
+  TextEditingController _textController = TextEditingController();
 
   AnimationController _controller;
 
@@ -38,6 +39,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       duration: const Duration(seconds: 10),
       vsync: this,
     )..repeat();
+
+    _textController.addListener((){
+      print("value: ${_textController.text}");
+      globals.username = _textController.text;
+      setState(() {});
+    });
   }
 
   Animatable<Color> background = TweenSequence<Color>([
@@ -65,9 +72,17 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   ]);
 
   @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     globals.width = MediaQuery.of(context).size.width;
     globals.height = MediaQuery.of(context).size.width;
+
     return AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
@@ -80,6 +95,21 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Form(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            labelText: 'Enter Name',
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Colors.white, width: 1.5),
+                            ),
+                          ),
+                          controller: _textController,
+                        ),
+                      ),
+                    ),
                     RaisedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/scan');

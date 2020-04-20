@@ -19,14 +19,14 @@ class _AlignScreenState extends State<AlignScreen> {
     return new Future.delayed(const Duration(seconds: 3), () => "3");
   }
 
-  _handleMaster(BuildContext context) {
+  _handleMaster() {
+    // Push to /solid route apparently it gives NoSuchMethodError
+    // Send message to peer to start its animation
     Navigator.pushNamed(context, '/solid');
-    // Send message to peer to start their animation
   }
 
-  _handlePeer(BuildContext context) async {
-    await sleep3();
-    Navigator.pushNamed(context, '/solid');
+  _handlePeer() {
+
   }
 
   @override
@@ -48,11 +48,12 @@ class _AlignScreenState extends State<AlignScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-              onPressed: () {
+              onPressed: () async {
                 print('AmIMaster: ' + globals.amIMaster.toString());
                 if (globals.amIMaster) {
                   print('Master in!');
-                  _handleMaster(context);
+                  // Navigator.pushNamed(context, '/solid');
+                  _handleMaster();
                 } 
               },
               child: Text(masterText),
