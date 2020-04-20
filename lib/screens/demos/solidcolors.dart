@@ -21,25 +21,27 @@ class AnimateState extends State<Animate> with SingleTickerProviderStateMixin {
           ..addListener(() => setState(() {}));
     animation = Tween(begin: -width, end: width).animate(controller);
     controller.forward();
+
+    width = globals.width;
+    height = globals.height;
   }
 
   @override
   Widget build(BuildContext context) {
-    width = globals.width;
-    height = globals.height;
-
     return Scaffold(
       body: Transform.translate(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              height: height,
-              width: width,
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
+            Flexible(
+              child: Container(
+                height: height,
+                width: width,
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                ),
               ),
-            )
+            ),
           ],
         ),
         offset: Offset(animation.value, 0.0),

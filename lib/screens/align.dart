@@ -53,23 +53,57 @@ class _AlignScreenState extends State<AlignScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.red,
-        child: OverflowBox(
-            minWidth: tot_width,
-            maxWidth: tot_width,
-            minHeight: tot_height,
-            maxHeight: tot_height,
-            alignment: (globals.amIMaster
-                ? Alignment.centerRight
-                : Alignment.centerLeft),
-            child: Image.network(
-              'https://picsum.photos/800?image=1',
-              height: tot_height,
-              width: tot_width,
-              fit: BoxFit.fitWidth,
-              alignment: Alignment.center,
-            )));
+    // return Container(
+    //     color: Colors.red,
+    //     child: OverflowBox(
+    //         minWidth: tot_width,
+    //         maxWidth: tot_width,
+    //         minHeight: tot_height,
+    //         maxHeight: tot_height,
+    //         alignment: (globals.amIMaster
+    //             ? Alignment.centerRight
+    //             : Alignment.centerLeft),
+    //         child: Image.network(
+    //           'https://picsum.photos/800?image=1',
+    //           height: tot_height,
+    //           width: tot_width,
+    //           fit: BoxFit.fitWidth,
+    //           alignment: Alignment.center,
+    //         )));
+    return Scaffold(
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Align(
+            alignment: globals.amIMaster ? Alignment.centerRight : Alignment.centerLeft,
+            child: Icon(
+              globals.amIMaster ? Icons.arrow_forward : Icons.arrow_back,
+              size: 60
+            ),
+          ),
+          RaisedButton(
+            onPressed: () async {
+              print('AmIMaster: ' + globals.amIMaster.toString());
+              if (globals.amIMaster) {
+                print('Master in!');
+                // Navigator.pushNamed(context, '/solid');
+                // _handleMaster();
+              }
+            },
+            child: Text(masterText),
+          ),
+          Align(
+            alignment: globals.amIMaster ? Alignment.centerRight : Alignment.centerLeft,
+            child: Icon(
+              globals.amIMaster ? Icons.arrow_forward : Icons.arrow_back,
+              size: 60
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }
 // return Scaffold(
