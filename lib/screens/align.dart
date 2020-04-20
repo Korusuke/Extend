@@ -19,11 +19,12 @@ class _AlignScreenState extends State<AlignScreen> {
     return new Future.delayed(const Duration(seconds: 3), () => "3");
   }
 
-  _handleMaster() {
+  _handleMaster(BuildContext context) {
     Navigator.pushNamed(context, '/solid');
+    // Send message to peer to start their animation
   }
 
-  _handlePeer() async {
+  _handlePeer(BuildContext context) async {
     await sleep3();
     Navigator.pushNamed(context, '/solid');
   }
@@ -31,7 +32,7 @@ class _AlignScreenState extends State<AlignScreen> {
   @override
   void initState() {
     super.initState();
-    if (globals.amIMaster) {
+    if (!globals.amIMaster) {
       setState(() {
         masterText = 'Press continue on master device!';
       });
@@ -48,11 +49,11 @@ class _AlignScreenState extends State<AlignScreen> {
           children: <Widget>[
             RaisedButton(
               onPressed: () {
+                print('AmIMaster: ' + globals.amIMaster.toString());
                 if (globals.amIMaster) {
-                  _handleMaster();
-                } else {
-                  _handlePeer();
-                }
+                  print('Master in!');
+                  _handleMaster(context);
+                } 
               },
               child: Text(masterText),
             )

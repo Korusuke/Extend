@@ -6,13 +6,14 @@ import 'package:ping_discover_network/ping_discover_network.dart';
 import 'package:mcan/globals.dart' as globals;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:avatar_glow/avatar_glow.dart';
 
 class Scan extends StatefulWidget {
   @override
   _ScanState createState() => _ScanState();
 }
 
-class _ScanState extends State<Scan> {
+class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
   startServer() async {
     globals.server =
         await HttpServer.bind(InternetAddress.anyIPv4, globals.port);
@@ -149,9 +150,15 @@ class _ScanState extends State<Scan> {
     replyPeers();
   }
 
+  AnimationController _controller;
+
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    )..repeat();
     handler();
   }
 
@@ -161,25 +168,66 @@ class _ScanState extends State<Scan> {
     globals.server.close();
   }
 
+  Animatable<Color> background = TweenSequence<Color>([
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Colors.red,
+        end: Colors.green,
+      ),
+    ),
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Colors.green,
+        end: Colors.blue,
+      ),
+    ),
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Colors.blue,
+        end: Colors.pink,
+      ),
+    ),
+  ]);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-        child: ClipOval(
-          child: Container(
-            color: Colors.blue,
-            height: 120.0, // height of the button
-            width: 120.0, // width of the button
-            child: Center(
-                child: Text(
-              'Scanning',
-              style:
-                  TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 20),
-            )),
-          ),
-        ),
-      )
-    );
+    return AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Scaffold(
+            body: Container(
+              color: background
+                  .evaluate(AlwaysStoppedAnimation(_controller.value)),
+              child: Center(
+                child: AvatarGlow(
+                  endRadius: 190.0, //required
+                  child: Material(
+                    //required
+                    elevation: 8.0,
+                    shape: CircleBorder(),
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      child: Text(
+                        'Scanning',
+                        style: TextStyle(
+                            color: Colors.white.withOpacity(0.8), fontSize: 20),
+                      ),
+                      padding: EdgeInsets.all(48),
+                      shape: CircleBorder(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
   }
 }
 
