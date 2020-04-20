@@ -25,9 +25,7 @@ class _AlignScreenState extends State<AlignScreen> {
     Navigator.pushNamed(context, '/solid');
   }
 
-  _handlePeer() {
-
-  }
+  _handlePeer() {}
 
   @override
   void initState() {
@@ -43,24 +41,37 @@ class _AlignScreenState extends State<AlignScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              onPressed: () async {
-                print('AmIMaster: ' + globals.amIMaster.toString());
-                if (globals.amIMaster) {
-                  print('Master in!');
-                  // Navigator.pushNamed(context, '/solid');
-                  _handleMaster();
-                } 
-              },
-              child: Text(masterText),
-            )
-          ],
-        ),
-      )
-    );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Align(
+            alignment: globals.amIMaster ? Alignment.centerRight : Alignment.centerLeft,
+            child: Icon(
+              globals.amIMaster ? Icons.arrow_forward : Icons.arrow_back,
+              size: 60
+            ),
+          ),
+          RaisedButton(
+            onPressed: () async {
+              print('AmIMaster: ' + globals.amIMaster.toString());
+              if (globals.amIMaster) {
+                print('Master in!');
+                // Navigator.pushNamed(context, '/solid');
+                // _handleMaster();
+              }
+            },
+            child: Text(masterText),
+          ),
+          Align(
+            alignment: globals.amIMaster ? Alignment.centerRight : Alignment.centerLeft,
+            child: Icon(
+              globals.amIMaster ? Icons.arrow_forward : Icons.arrow_back,
+              size: 60
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }
