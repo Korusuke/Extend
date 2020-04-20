@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mcan/globals.dart' as globals;
+import 'package:extend/globals.dart' as globals;
 
 class Animate extends StatefulWidget {
   @override

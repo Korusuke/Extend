@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:mcan/globals.dart' as globals;
+import 'package:extend/globals.dart' as globals;
 
 class AlignScreen extends StatefulWidget {
   @override
@@ -56,7 +56,7 @@ class _AlignScreenState extends State<AlignScreen> {
         alignment:
             (globals.amIMaster ? Alignment.centerRight : Alignment.centerLeft),
         child: FadeInImage.assetNetwork(
-          placeholder: 'assets/images/loading.gif',
+          placeholder: (globals.amIMaster ? 'assets/images/right.png' : 'assets/images/left.png'),
           image: 'https://picsum.photos/800?image=${id}',
         ),
       ),

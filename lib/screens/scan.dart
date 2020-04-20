@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:wifi/wifi.dart';
 import 'package:ping_discover_network/ping_discover_network.dart';
-import 'package:mcan/globals.dart' as globals;
+import 'package:extend/globals.dart' as globals;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:avatar_glow/avatar_glow.dart';

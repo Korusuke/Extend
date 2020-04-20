@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mcan/screens/scan.dart';
-import 'package:mcan/screens/align.dart';
-import 'package:mcan/screens/demos/solidcolors.dart';
-import 'package:mcan/globals.dart' as globals;
+import 'package:extend/screens/scan.dart';
+import 'package:extend/screens/align.dart';
+import 'package:extend/screens/demos/solidcolors.dart';
+import 'package:extend/globals.dart' as globals;
 
 void main() {
   runApp(MaterialApp(
