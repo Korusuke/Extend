@@ -28,7 +28,7 @@ class _ScanState extends State<Scan> {
     final String subnet = ip.substring(0, ip.lastIndexOf('.'));
     final int port = globals.port;
     final stream = NetworkAnalyzer.discover2(subnet, port);
-    print('listening');
+    print('listening...');
     stream.listen((NetworkAddress addr) async {
       if (addr.exists) {
         print('Found device: ${addr.ip}');
@@ -132,7 +132,7 @@ class _ScanState extends State<Scan> {
       } else {
         request.response
           ..headers.contentType =
-              new ContentType("text", "palin", charset: "utf-8")
+              new ContentType("text", "plain", charset: "utf-8")
           ..write('The World is a mysterious place')
           ..close();
       }
@@ -165,20 +165,21 @@ class _ScanState extends State<Scan> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: ClipOval(
-        child: Container(
-          color: Colors.blue,
-          height: 120.0, // height of the button
-          width: 120.0, // width of the button
-          child: Center(
-              child: Text(
-            'Scanning',
-            style:
-                TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 20),
-          )),
+        child: ClipOval(
+          child: Container(
+            color: Colors.blue,
+            height: 120.0, // height of the button
+            width: 120.0, // width of the button
+            child: Center(
+                child: Text(
+              'Scanning',
+              style:
+                  TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 20),
+            )),
+          ),
         ),
-      ),
-    ));
+      )
+    );
   }
 }
 

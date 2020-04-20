@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mcan/screens/scan.dart';
 import 'package:mcan/screens/align.dart';
+import 'package:mcan/screens/demos/solidcolors.dart';
 import 'package:mcan/globals.dart' as globals;
 
 void main() {
@@ -11,6 +12,7 @@ void main() {
       '/': (context) => Home(),
       '/scan': (context) => Scan(),
       '/align': (context) => AlignScreen(),
+      '/solid': (context) => Animate(),
     },
   ));
 }
@@ -34,18 +36,19 @@ class _HomeState extends State<Home> {
     globals.height = MediaQuery.of(context).size.width;
     return Scaffold(
         body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          RaisedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/scan');
-            },
-            child: Text(masterText),
-          )
-        ],
-      ),
-    ));
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/scan');
+              },
+              child: Text(masterText),
+            )
+          ],
+        ),
+      )
+    );
   }
 }
