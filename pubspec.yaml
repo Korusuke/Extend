@@ -21,6 +21,7 @@ dependencies:
   wifi: ^0.1.5
   fluttertoast: ^4.0.0
   http: ^0.12.0+4
+  avatar_glow: ^1.1.0
   flutter:
     sdk: flutter
 
