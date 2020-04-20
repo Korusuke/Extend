@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mcan/globals.dart' as globals;
+import 'dart:math';
 
 class AlignScreen extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class AlignScreen extends StatefulWidget {
 
 class _AlignScreenState extends State<AlignScreen> {
   String masterText = "Continue!";
+  double tot_width;
+  double tot_height;
   // TODO:
   // [ ] Add two arrow marks for alignment
   // [ ] Connect button on master, press connect button message on peer
@@ -20,46 +23,73 @@ class _AlignScreenState extends State<AlignScreen> {
   }
 
   _handleMaster(BuildContext context) {
-    Navigator.pushNamed(context, '/solid');
+    // Navigator.pushNamed(context, '/solid');
     // Send message to peer to start their animation
   }
 
   _handlePeer(BuildContext context) async {
-    await sleep3();
-    Navigator.pushNamed(context, '/solid');
+    // await sleep3();
+    // Navigator.pushNamed(context, '/solid');
   }
 
   @override
   void initState() {
     super.initState();
+    setState(() {
+      tot_height = globals.height;
+      print(tot_height);
+      tot_width = globals.width + double.parse(globals.peer.width);
+      print(tot_width);
+    });
     if (!globals.amIMaster) {
       setState(() {
         masterText = 'Press continue on master device!';
       });
+      _handlePeer(context);
+    } else {
+      _handleMaster(context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              onPressed: () {
-                print('AmIMaster: ' + globals.amIMaster.toString());
-                if (globals.amIMaster) {
-                  print('Master in!');
-                  _handleMaster(context);
-                } 
-              },
-              child: Text(masterText),
-            )
-          ],
-        ),
-      )
-    );
+    return Container(
+        color: Colors.red,
+        child: OverflowBox(
+            minWidth: tot_width,
+            maxWidth: tot_width,
+            minHeight: tot_height,
+            maxHeight: tot_height,
+            alignment: (globals.amIMaster
+                ? Alignment.centerRight
+                : Alignment.centerLeft),
+            child: Image.network(
+              'https://picsum.photos/800?image=1',
+              height: tot_height,
+              width: tot_width,
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.center,
+            )));
   }
 }
+// return Scaffold(
+//         body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           crossAxisAlignment: CrossAxisAlignment.center,
+//           children: <Widget>[
+//             RaisedButton(
+//               onPressed: () {
+//                 print('AmIMaster: ' + globals.amIMaster.toString());
+//                 if (globals.amIMaster) {
+//                   print('Master in!');
+//                   _handleMaster(context);
+//                 }
+//               },
+//               child: Text(masterText),
+//             )
+//           ],
+//         ),
+//       )
+//     );
+//   }

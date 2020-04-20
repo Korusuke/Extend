@@ -67,7 +67,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     globals.width = MediaQuery.of(context).size.width;
-    globals.height = MediaQuery.of(context).size.width;
+    globals.height = MediaQuery.of(context).size.height;
     return AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
