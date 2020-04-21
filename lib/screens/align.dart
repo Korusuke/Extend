@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:extend/globals.dart' as globals;
 
@@ -21,7 +22,7 @@ class _AlignScreenState extends State<AlignScreen> {
   void initState() {
     super.initState();
     setState(() {
-      totalHeight = globals.height;
+      totalHeight = min(globals.height, double.parse(globals.peer.height));
       print(totalHeight);
       totalWidth = globals.width + double.parse(globals.peer.width);
       print(globals.width);
@@ -37,7 +38,11 @@ class _AlignScreenState extends State<AlignScreen> {
 
   updateImage() async {
     setState(() {
-      id = id + 1;
+      if (id < 5) {
+        id = id + 1;
+      } else {
+        id = 1;
+      }
     });
     await sleep6();
     updateImage();
@@ -47,7 +52,7 @@ class _AlignScreenState extends State<AlignScreen> {
   Widget build(BuildContext context) {
     return Container(
       height: totalHeight,
-      color: Colors.red,
+      color: Colors.black26,
       child: OverflowBox(
         minWidth: totalWidth,
         maxWidth: totalWidth,
@@ -55,10 +60,7 @@ class _AlignScreenState extends State<AlignScreen> {
         maxHeight: totalHeight,
         alignment:
             (globals.amIMaster ? Alignment.centerRight : Alignment.centerLeft),
-        child: FadeInImage.assetNetwork(
-          placeholder: (globals.amIMaster ? 'assets/images/right.png' : 'assets/images/left.png'),
-          image: 'https://picsum.photos/800?image=${id}',
-        ),
+        child: Image.asset('assets/images/slides/$id.jpg'),
       ),
     );
 

@@ -1,4 +1,4 @@
-name: extend 
+name: extend
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -27,7 +27,7 @@ dependencies:
   flutter_launcher_icons: ^0.7.3
 
 flutter_icons:
-  image_path: "assets/images/icon.png" 
+  image_path: "assets/images/icon.png"
   android: true
   ios: true
 
@@ -56,6 +56,11 @@ flutter:
    - assets/images/loading.gif
    - assets/images/left.png
    - assets/images/right.png
+   - assets/images/slides/1.jpg
+   - assets/images/slides/2.jpg
+   - assets/images/slides/3.jpg
+   - assets/images/slides/4.jpg
+   - assets/images/slides/5.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -45,7 +45,9 @@ class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 fontSize: 16.0);
-            sleep2();
+            // Duration d = new Duration(milliseconds: 100);
+
+            // sleep(d);
             globals.amIMaster = true;
             Navigator.pushNamed(context, '/align');
           }
@@ -64,7 +66,8 @@ class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
         'name': globals.username,
         'ip': globals.myip,
         'width': globals.width.toString(),
-        'height': globals.height.toString()
+        'height': globals.height.toString(),
+        'time': new DateTime.now().millisecondsSinceEpoch.toString()
       }),
     );
 
@@ -85,7 +88,8 @@ class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
         'name': globals.username,
         'ip': globals.myip,
         'width': globals.width.toString(),
-        'height': globals.height.toString()
+        'height': globals.height.toString(),
+        'time': new DateTime.now().millisecondsSinceEpoch.toString()
       }),
     );
 
@@ -110,7 +114,8 @@ class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
             'name': globals.username,
             'ip': globals.myip,
             'width': globals.width.toString(),
-            'height': globals.height.toString()
+            'height': globals.height.toString(),
+            'time': new DateTime.now().millisecondsSinceEpoch.toString()
           }))
           ..close();
       } else if (request.uri.toString() == '/connect') {
@@ -128,7 +133,12 @@ class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
             backgroundColor: Colors.green,
             textColor: Colors.white,
             fontSize: 16.0);
-        await sleep2();
+        // int temporal_difference =
+        //     int.parse(data['time']) - new DateTime.now().millisecondsSinceEpoch;
+
+        // Duration d = new Duration(milliseconds: 4000 - temporal_difference);
+
+        // sleep(d);
         Navigator.pushNamed(context, '/align');
       } else {
         request.response
@@ -140,9 +150,9 @@ class _ScanState extends State<Scan> with SingleTickerProviderStateMixin {
     }
   }
 
-  Future sleep2() {
-    return new Future.delayed(const Duration(seconds: 2), () => "2");
-  }
+  // Future sleep(int t) {
+  //   return new Future.delayed(const Duration(microseconds: t), () => "2");
+  // }
 
   handler() async {
     await startServer();
