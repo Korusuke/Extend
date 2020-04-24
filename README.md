@@ -1,27 +1,32 @@
 <div align="center">
-    <img src="https://i.imgur.com/4hSLkAQ.png" width=200px/>
-</div>
+    <img src="https://i.imgur.com/4hSLkAQ.png" width=200px height=200px/>
 
-<div align="center">
-    [![made-with-flutter](https://img.shields.io/badge/Made%20with-Flutter-blue.svg)](https://flutter.dev/)
+
+
+<br>
+<br>
+
+
+ [![](https://img.shields.io/badge/Made_with-flutter-blue?style=for-the-badge&logo=flutter)](https://flutter.dev/ "Flutter")
 </div>
 
 # Extend
 ---
-Extend is a mobile application, more like a proof of concept to extend our tiny mobile displays, by virtually connecting multiple devices together, in turn forming one huge _virtual_ display.
+Extend is a mobile application, more like a proof of concept to extend our tiny mobile displays, by virtually connecting multiple devices together, in turn forming _"one huge virtual display"_.
 
----
+
 # Features
 - Sets up an HTTP server on each Peer device.
-- Uses ping to setup connection with other peers.
-- Can be extended to any use case.
+- Uses [ping_discover_network]() to find peers connected to the same Wifi network.
+- Adopts Master / Slave Architecture to setup connection between peers.
+- Can be extended to any application use case.
 
----
 # TODOs
-- [ ] Add bluetooth connection
+- [ ] Allow bluetooth connection between peers
 - [ ] Setup connection via websockets
+- [ ] Add an arcade game demo 
 
----
+
 [Downlad APK](https://drive.google.com/file/d/1jWAuIxsWRdXznS0lqbEKBtUujYF1hnoQ/view?usp=sharing)
 
 ---
