@@ -1,16 +1,28 @@
-# mcan
+<div align="center">
+    <img src="https://i.imgur.com/4hSLkAQ.png" width=200px/>
+</div>
 
-A new Flutter project.
+<div align="center">
+    [![made-with-flutter](https://img.shields.io/badge/Made%20with-Flutter-blue.svg)](https://flutter.dev/)
+</div>
 
-## Getting Started
+# Extend
+---
+Extend is a mobile application, more like a proof of concept to extend our tiny mobile displays, by virtually connecting multiple devices together, in turn forming one huge _virtual_ display.
 
-This project is a starting point for a Flutter application.
+---
+# Features
+- Sets up an HTTP server on each Peer device.
+- Uses ping to setup connection with other peers.
+- Can be extended to any use case.
 
-A few resources to get you started if this is your first Flutter project:
+---
+# TODOs
+- [ ] Add bluetooth connection
+- [ ] Setup connection via websockets
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+---
+[Downlad APK](https://drive.google.com/file/d/1jWAuIxsWRdXznS0lqbEKBtUujYF1hnoQ/view?usp=sharing)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+> Part of college course, MCAN mini-project.
