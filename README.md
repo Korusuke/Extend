@@ -21,13 +21,26 @@ Extend is a mobile application, more like a proof of concept to extend our tiny 
 - Adopts Master / Slave Architecture to setup connection between peers.
 - Can be extended to any application use case.
 
+# Steps to run
+- Download the APK on devices connected to the same network.
+- Click connect on any of the device, the first to initiate becomes master.
+- It automatically scans for other peer devices and sets up connection between them.
+- Enjoy the image slideshow demo!
+
+# Demo
+<div align="center">
+    <br> 
+        <img src ="./assets/images/demo.gif" width=800px height=500px alt="demo-gif">
+    <br>
+</div>
+
 # TODOs
 - [ ] Allow bluetooth connection between peers
 - [ ] Setup connection via websockets
 - [ ] Add an arcade game demo 
 
+<br>
 
 [Downlad APK](https://drive.google.com/file/d/1jWAuIxsWRdXznS0lqbEKBtUujYF1hnoQ/view?usp=sharing)
 
----
 > Part of college course, MCAN mini-project.
